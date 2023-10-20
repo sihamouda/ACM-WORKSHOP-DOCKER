@@ -6,7 +6,7 @@
   "scripts": {
     "init": "cp .dev.env .env",
     "build": "npx tsc",
-    "start": "npx tsc && node dist/server.js",
+    "start": "node dist/server.js",
     "start:dev": "concurrently \"npx tsc --watch\" \"nodemon -q dist/server.js\""
   },
   "keywords": [],
