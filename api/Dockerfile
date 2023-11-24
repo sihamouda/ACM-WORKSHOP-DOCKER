@@ -1,12 +1,14 @@
 #  layer
-FROM node:slim
+FROM node:18
+
+EXPOSE 5000
 
 WORKDIR /app
 
-COPY . .
+COPY package*.json .
 
 RUN npm i
 
-EXPOSE 5000
+COPY . .
 
 CMD [ "npm","run","start" ]
