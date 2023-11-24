@@ -1,0 +1,22 @@
+version: '3.8'
+
+
+services:
+  frontend:
+    build:
+      context: ./app1
+    ports:
+      - 4000:3000
+    volumes:
+      - ./app1:/app
+  nginx:
+    image: nginx:latest
+    env_file:
+      - .env
+    ports:
+      - 80:80
+    environment:
+      - REACT_APP_URL=${REACT_APP_URL}
+    volumes:
+      - ./nginx/app1.conf.template:/etc/nginx/templates/app1.conf.template
+    command: [nginx-debug, '-g', 'daemon off;']
